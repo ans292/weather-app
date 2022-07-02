@@ -1,0 +1,77 @@
+h1 {
+  position: relative;
+  left: 82px;
+  top: -58px;
+}
+h5 {
+  text-align: center;
+  font-size: 15px;
+}
+p {
+  text-align: center;
+  font-size: 14px;
+}
+.city-name {
+  font-weight: 600;
+}
+.content-border {
+  max-width: 700px;
+  padding: 20px;
+  margin: 40px 0px;
+  border: 1px solid black;
+  max-height: 480px;
+}
+.city {
+  width: 60%;
+  margin-top: 20px;
+  margin-bottom: 35px;
+  margin-right: 20px;
+}
+.city-info {
+  position: relative;
+  list-style: none;
+  right: -317px;
+  font-size: 20px;
+  line-height: 25px;
+  top: -155px;
+}
+.city-info li {
+  font-size: 18px;
+}
+.moisture {
+  position: relative;
+  padding: 0;
+  list-style: none;
+  line-height: 18px;
+  margin: 20px;
+  left: -18px;
+  font-size: 15px;
+  bottom: 129px;
+}
+.forecast {
+  position: relative;
+  bottom: 100px;
+  margin-right: 130px;
+}
+.card {
+  border: none;
+}
+.card img {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.temp-type {
+  position: relative;
+  top: -110px;
+  left: 142px;
+  text-decoration: none;
+  font-size: 18px;
+}
+a {
+  text-decoration: none;
+}
+.btn-success {
+  position: relative;
+  left: 15px;
+}
