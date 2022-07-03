@@ -7,7 +7,7 @@ h5 {
   text-align: center;
   font-size: 15px;
 }
-p {
+.card-text {
   text-align: center;
   font-size: 14px;
 }
@@ -17,7 +17,7 @@ p {
 .content-border {
   max-width: 700px;
   padding: 20px;
-  margin: 40px 0px;
+  margin: 40px 0px 0px;
   border: 1px solid black;
   max-height: 480px;
 }
@@ -74,4 +74,7 @@ a {
 .btn-success {
   position: relative;
   left: 15px;
+}
+.footer {
+  font-size: 14px;
 }
