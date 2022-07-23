@@ -27,7 +27,7 @@ function showTemperature(response) {
   console.log(response);
   let name = response.data.name;
   console.log(temperature);
-  let weather = response.data.weather[0].main;
+  let weather = response.data.weather[0].description;
   let localTemp = document.querySelector("#temperature");
   let localName = document.querySelector("#city-name");
   let localWeather = document.querySelector("#weather");

@@ -34,6 +34,7 @@ h5 {
   font-size: 20px;
   line-height: 25px;
   top: -155px;
+  text-transform: capitalize;
 }
 .city-info li {
   font-size: 18px;
@@ -46,7 +47,7 @@ h5 {
   margin: 20px;
   left: -18px;
   font-size: 15px;
-  bottom: 129px;
+  bottom: 140px;
 }
 .forecast {
   position: relative;
