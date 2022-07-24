@@ -28,12 +28,19 @@ function showTemperature(response) {
   let name = response.data.name;
   console.log(temperature);
   let weather = response.data.weather[0].description;
+  let humidity = response.data.main.humidity;
+  let wind = Math.round(response.data.wind.speed);
+  console.log(wind);
   let localTemp = document.querySelector("#temperature");
   let localName = document.querySelector("#city-name");
   let localWeather = document.querySelector("#weather");
+  let localHumidity = document.querySelector("#humidity");
+  let localWind = document.querySelector("#wind");
   localTemp.innerHTML = temperature;
   localName.innerHTML = name;
   localWeather.innerHTML = weather;
+  localHumidity.innerHTML = humidity;
+  localWind.innerHTML = wind;
 }
 
 function submitCity(event) {
