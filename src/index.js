@@ -1,26 +1,30 @@
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+function formatDate(timestamp) {
+  let now = new Date();
 
-let now = new Date();
-let day = days[now.getDay()];
-let hours = now.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
+  let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  return `${day}, ${hours}:${minutes}`;
+  //let formattedDate = document.querySelector("#date-time");
+  //let today = `${day}, ${hours}:${minutes}`;
+  //formattedDate.innerHTML = today;
 }
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-let formattedDate = document.querySelector("#date-time");
-let today = `${day}, ${hours}:${minutes}`;
-formattedDate.innerHTML = today;
 
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
@@ -37,11 +41,13 @@ function showTemperature(response) {
   let localHumidity = document.querySelector("#humidity");
   let localWind = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
+  let dateElement = document.querySelector("#date-time");
   localTemp.innerHTML = temperature;
   localName.innerHTML = name;
   localWeather.innerHTML = weather;
   localHumidity.innerHTML = humidity;
   localWind.innerHTML = wind;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
