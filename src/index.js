@@ -48,7 +48,7 @@ function submitCity(event) {
   let city = document.querySelector("#city-input");
   let currentCity = city.value;
   let apiKey = "2788427c942749bbb1b2d649ace67361";
-  let units = "metric";
+  let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
 }
