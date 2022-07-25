@@ -69,6 +69,10 @@ h5 {
   text-decoration: none;
   font-size: 18px;
 }
+.temp-type .active {
+  color: black;
+  cursor: default;
+}
 a {
   text-decoration: none;
 }
