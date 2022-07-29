@@ -23,27 +23,49 @@ function formatDate(timestamp) {
   return `${day}, ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
-  let days = ["Tues", "Wed", "Thu", "Fri"];
+
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` 
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` 
             <div class="col-2">
-              <div class="weather-forecast-date">${day}</div>
+              <div class="weather-forecast-date">${formatDay(
+                forecastDay.dt
+              )}</div>
               <img src="images/partly cloudy.png" alt="" width="42" />
 
               <div class="weather-forecast-temperatures">
-                <span class="weather-forecast-temperature-max">101° </span>
-                <span class="weather-forecast-temperature-min"> 76° </span>
+                <span class="weather-forecast-temperature-max">${Math.round(
+                  forecastDay.temp.max
+                )}° </span>
+                <span class="weather-forecast-temperature-min"> ${Math.round(
+                  forecastDay.temp.min
+                )}° </span>
               </div>
             </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
+}
+
+function getForecast(coordinates) {
+  let apiKey = "2788427c942749bbb1b2d649ace67361";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showTemperature(response) {
@@ -76,6 +98,8 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -136,4 +160,3 @@ let celsiusTemp = document.querySelector("#celsius-link");
 celsiusTemp.addEventListener("click", celsiusCalculation);
 
 search("Honolulu");
-displayForecast();
