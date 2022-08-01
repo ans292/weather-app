@@ -65,7 +65,7 @@ function displayForecast(response) {
 
 function getForecast(coordinates) {
   let apiKey = "2788427c942749bbb1b2d649ace67361";
-  let units = "metric";
+  let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayForecast);
 }
@@ -74,11 +74,9 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   console.log(response);
   let name = response.data.name;
-  console.log(temperature);
   let weather = response.data.weather[0].description;
   let humidity = response.data.main.humidity;
   let wind = Math.round(response.data.wind.speed);
-  console.log(wind);
   let localTemp = document.querySelector("#temperature");
   let localName = document.querySelector("#city-name");
   let localWeather = document.querySelector("#weather");
@@ -106,7 +104,7 @@ function showTemperature(response) {
 
 function search(city) {
   let apiKey = "2788427c942749bbb1b2d649ace67361";
-  let units = "metric";
+  let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
 }
@@ -135,30 +133,5 @@ currentButton.addEventListener("click", currentCityInfo);
 
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", submitCity);
-
-function farenheitCalculation(event) {
-  event.preventDefault();
-  celsiusTemp.classList.remove("active");
-  farenheitTemp.classList.add("active");
-  let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  let localTemp = document.querySelector("#temperature");
-  localTemp.innerHTML = Math.round(farenheitTemperature);
-}
-let farenheitTemp = document.querySelector("#farenheit-link");
-farenheitTemp.addEventListener("click", farenheitCalculation);
-
-function celsiusCalculation(event) {
-  event.preventDefault();
-
-  farenheitTemp.classList.remove("active");
-  celsiusTemp.classList.add("active");
-  let localTemp = document.querySelector("#temperature");
-  localTemp.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusTemperature = null;
-
-let celsiusTemp = document.querySelector("#celsius-link");
-celsiusTemp.addEventListener("click", celsiusCalculation);
 
 search("Honolulu");
