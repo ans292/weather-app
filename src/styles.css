@@ -7,6 +7,11 @@ h1 {
 a {
   text-decoration: none;
 }
+.icon {
+  position: relative;
+  top: 15px;
+  right: 15px;
+}
 
 .city-name {
   font-weight: 600;
@@ -33,12 +38,13 @@ a {
   font-size: 20px;
   line-height: 25px;
   top: -155px;
-  text-transform: capitalize;
 }
 .city-info li {
   font-size: 18px;
 }
-
+.city-info li:first-letter {
+  text-transform: capitalize;
+}
 .moisture {
   position: relative;
   padding: 0;
