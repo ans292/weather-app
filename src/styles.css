@@ -24,6 +24,7 @@ a {
   border: 1px solid black;
   max-height: 480px;
   border-radius: 5px;
+  background-color: rgb(198, 220, 239);
 }
 .city {
   width: 75%;
